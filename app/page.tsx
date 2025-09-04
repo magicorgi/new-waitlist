@@ -20,8 +20,8 @@ export default function Home() {
       if (!res.ok) throw new Error(data?.error || "提交失败");
       setMessage("已加入 Waitlist！");
       setEmail("");
-    } catch (err: any) {
-      setMessage(err.message || "提交失败");
+    } catch (err: unknown) {
+      setMessage(err instanceof Error ? err.message : "提交失败");
     } finally {
       setLoading(false);
     }
